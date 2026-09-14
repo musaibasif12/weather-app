@@ -1,29 +1,64 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <h1>Weather App</h1>
-    <div class="input-box">
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="header">
+        <h1>Weather App</h1>
+        <p>Monday 14 Sep 2026</p>
+      </div>
+      <div class="form-box">
         <form onsubmit="wheather(event)">
-            <input type="text" id="input-value" required>
-            <button>Check Weather</button>
+          <input
+            type="text"
+            id="input-value"
+            required
+            placeholder="Enter City Name"
+          />
+          <button>Check Weather</button>
         </form>
-        <table>
-            <tr>
-                <td id="temp">Temp</td>
-                <td id="temp-value"></td>
-            </tr>
-            <tr>
-                <td id="humidity">Humidity</td>
-                <td id="humi-value"></td>
-            </tr>
-        </table>
+      </div>
+      <table id="table">
+        <tr>
+          <td>Temp C</td>
+          <td id="temp-value-c"></td>
+        </tr>
+        <tr>
+          <td>Temp F</td>
+          <td id="temp-value-f"></td>
+        </tr>
+        <tr>
+          <td>Feels Like C</td>
+          <td id="feels-like-c"></td>
+        </tr>
+        <tr>
+          <td>Feels Like F</td>
+          <td id="feels-like-f"></td>
+        </tr>
+        <tr>
+          <td>Humidity</td>
+          <td id="humi-value"></td>
+        </tr>
+        <tr>
+          <td>Chances of Rain</td>
+          <td id="rain-chances"></td>
+        </tr>
+        <tr>
+          <td>Wind Speed</td>
+          <td id="wind-speed"></td>
+        </tr>
+        <tr>
+          <td>City</td>
+          <td id="city"></td>
+        </tr>
+      </table>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios@1.17.0/dist/axios.min.js"></script>
     <script src="./app.js"></script>
-</body>
+  </body>
 </html>

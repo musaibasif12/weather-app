@@ -3,61 +3,62 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Weather App</title>
     <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+    />
   </head>
   <body>
     <div class="main-container">
       <div class="header">
-        <h1>Weather App</h1>
-        <p>Monday 14 Sep 2026</p>
+        <h1>
+          <i class="fa-solid fa-cloud-sun h1-cloud"></i><span>Weather</span> App
+        </h1>
+        <p id="current-date"></p>
       </div>
       <div class="form-box">
         <form onsubmit="wheather(event)">
+          <!-- <i class="fa-solid fa-location-dot search-icon"></i> -->
           <input
             type="text"
             id="input-value"
             required
-            placeholder="Enter City Name"
+            placeholder="Search a city..."
           />
-          <button>Check Weather</button>
+          <button type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>Check Weather
+          </button>
         </form>
       </div>
-      <table id="table">
-        <tr>
-          <td>Temp C</td>
-          <td id="temp-value-c"></td>
-        </tr>
-        <tr>
-          <td>Temp F</td>
-          <td id="temp-value-f"></td>
-        </tr>
-        <tr>
-          <td>Feels Like C</td>
-          <td id="feels-like-c"></td>
-        </tr>
-        <tr>
-          <td>Feels Like F</td>
-          <td id="feels-like-f"></td>
-        </tr>
-        <tr>
-          <td>Humidity</td>
-          <td id="humi-value"></td>
-        </tr>
-        <tr>
-          <td>Chances of Rain</td>
-          <td id="rain-chances"></td>
-        </tr>
-        <tr>
-          <td>Wind Speed</td>
-          <td id="wind-speed"></td>
-        </tr>
-        <tr>
-          <td>City</td>
-          <td id="city"></td>
-        </tr>
-      </table>
+      <section class="weather-hero">
+        <div class="temperature">
+          <div class="sun"><img src="./Sun.png" alt="Sunny weather" /></div>
+          <div class="temp-content">
+            <p>Current temperature</p>
+            <h1 class="h1-temp" id="temp-value-c">--°C</h1>
+          </div>
+        </div>
+        <div class="temp-content">
+          <p class="location-label"><i class="fa-solid fa-location-dot"></i> Currently in</p>
+          <h2 id="city">Karachi</h2>
+        </div>
+      </section>
+      <div class="section-heading">
+        <p>Today’s details</p>
+      </div>
+      <div class="metrics" id="table">
+        <div class="metric"><i class="fa-solid fa-temperature-half"></i><span>Feels like</span><strong id="feels-like-c">--</strong></div>
+        <div class="metric"><i class="fa-solid fa-temperature-low"></i><span>Fahrenheit</span><strong id="temp-value-f">--</strong></div>
+        <div class="metric"><i class="fa-solid fa-temperature-arrow-up"></i><span>Feels like F</span><strong id="feels-like-f">--</strong></div>
+        <div class="metric"><i class="fa-solid fa-droplet"></i><span>Humidity</span><strong id="humi-value">--</strong></div>
+        <div class="metric"><i class="fa-solid fa-cloud-rain"></i><span>Chance of rain</span><strong id="rain-chances">--</strong></div>
+        <div class="metric"><i class="fa-solid fa-wind"></i><span>Wind speed</span><strong id="wind-speed">--</strong></div>
+      </div>
+      <div class="footer-note"><span>Made by Musaib Asif.</span></div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/@date-fns/cdn@4.4.0/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios@1.17.0/dist/axios.min.js"></script>
     <script src="./app.js"></script>
   </body>

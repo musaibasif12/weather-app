@@ -1,69 +1,260 @@
-@import url("https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap");
 * {
   box-sizing: border-box;
 }
 
+/* Basic colors - changing these updates the whole design */
+:root {
+  --white: #f7fbff;
+  --light-text: rgba(236, 245, 255, 0.7);
+  --yellow: #ffcf54;
+  --dark-blue: #17415e;
+}
+
+/* The page background */
 body {
-  color: white;
-  font-family: "Google Sans", sans-serif;
+  color: var(--white);
+  font-family: "DM Sans", sans-serif;
   min-height: 100vh;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("https://images.unsplash.com/photo-1592210454359-9043f067919b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  padding: 28px 16px;
+  background-image: url("https://images.pexels.com/photos/5537114/pexels-photo-5537114.jpeg");
   background-size: cover;
   background-position: center;
-  /* background-repeat: no-repeat; */
+  background-attachment: fixed;
 }
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 42, 77, 0.2);
+  pointer-events: none;
+}
+
 .header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 60px;
-  padding: 0px 20px;
-  margin-bottom: 0px;
+  width: 100%;
+  margin-bottom: 24px;
 }
+
+/* App name and date */
 .header h1 {
-  font-size: 24px;
-  font-weight: 400;
+  font-family: "Manrope", sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  margin: 0;
+}
+.header h1 span {
+  font-weight: 800;
 }
 .header p {
-  font-size: 10px;
-  font-weight: 200;
+  color: var(--light-text);
+  font-size: 12px;
+  margin: 0;
 }
+/* Main glass panel */
 .main-container {
+  position: relative;
+  z-index: 1;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  border: 1px solid rgb(234, 234, 234);
-  border-radius: 8px;
-  background-color: rgb(0, 0, 0, 0.8);
-  width: auto;
-  padding: 0px 25px 20px 25px;
+  width: min(680px, 100%);
+  padding: 30px 34px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 30px;
+  background: rgba(58, 113, 153, 0.52);
+  box-shadow: 0 28px 70px rgba(7, 37, 65, 0.38);
+  backdrop-filter: blur(20px);
 }
+
+/* City search area */
 .form-box {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 15px;
+  margin-bottom: 28px;
+  background: rgba(255, 255, 255, 0.12);
+}
+.form-box form {
   display: flex;
-  background-color: rgb(255, 255, 255, 0.2);
-  padding: 10px 12px;
-  border-radius: 4px;
-  margin-top: 0px;
-  margin-bottom: 20px;
+  align-items: center;
+  width: 100%;
 }
 .form-box input {
-  height: 25px;
+  flex: 1;
+  min-width: 0;
+  color: #17415e;
+  background: rgba(244, 250, 255, 0.9);
   border: none;
-  border-radius: 2px;
+  border-radius: 11px;
+  padding: 13px 12px;
+  font: inherit;
+  margin-right: 10px;
 }
-.form-box button {
-  height: 25px;
-  font-size: 12px;
-  font-weight: 500;
-  border: none;
-  border-radius: 2px;
+input:focus {
+  outline: 3px solid rgba(255, 207, 84, 0.28);
 }
 input::placeholder {
+  color: #7190a6;
+  font-size: 13px;
+}
+.form-box button {
+  color: #163e5d;
+  background: var(--yellow);
+  border: none;
+  border-radius: 11px;
+  padding: 13px 18px;
+  font:
+    600 12px "DM Sans",
+    sans-serif;
+  cursor: pointer;
+  cursor: pointer;
+}
+.form-box button:hover {
+  background: #ffda70;
+}
+
+/* Current temperature and city */
+.weather-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 4px 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.temperature {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.sun img {
+  width: 86px;
+}
+.temp-content p,
+.muted {
+  color: var(--light-text);
   font-size: 12px;
-  padding: 6px;
+  margin: 0 0 5px;
+}
+.h1-temp {
+  font-family: "Manrope", sans-serif;
+  font-size: 56px;
+  line-height: 1;
+  font-weight: 700;
+  margin: 0;
+}
+.location-label {
+  color: var(--light-text);
+}
+.location-label i {
+  margin-right: 5px;
+}
+.temp-content h2 {
+  font-family: "Manrope", sans-serif;
+  font-size: 22px;
+  margin: 0 0 5px;
+}
+
+/* Heading above the weather cards */
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 22px 2px 12px;
+}
+.section-heading p {
+  margin: 0;
+  font:
+    600 14px "Manrope",
+    sans-serif;
+}
+
+/* Weather information cards */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+}
+.metric {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  align-items: center;
+  column-gap: 8px;
+  padding: 14px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.09);
+}
+.metric i {
+  grid-row: span 2;
+  color: var(--yellow);
+  font-size: 15px;
+}
+.metric span {
+  color: var(--light-text);
+  font-size: 11px;
+}
+.metric strong {
+  font:
+    600 14px "Manrope",
+    sans-serif;
+}
+
+/* Small footer text */
+.footer-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  color: var(--light-text);
+  font-size: 10px;
+  padding-top: 20px;
+}
+
+@media (max-width: 560px) {
+  .main-container {
+    padding: 24px 18px 18px;
+    border-radius: 24px;
+  }
+  .header {
+    align-items: flex-start;
+  }
+ 
+  .header p {
+    text-align: right;
+    max-width: 90px;
+  }
+  .form-box button {
+    padding-inline: 12px;
+  }
+  .form-box button {
+    font-size: 0;
+  }
+  .form-box button i {
+    font-size: 13px;
+    margin: 0;
+  }
+  .weather-hero {
+    align-items: center;
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
+  }
+  .temperature {
+    justify-content: center;
+  }
+  .metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
